@@ -23,10 +23,21 @@ Docker: Used to package the application, ensuring consistent deployment across e
 
 The API leverages several design patterns:
 
-### Singleton Pattern: For managing shared resources like database connections and cache.
-### Repository Pattern: Abstracts database interactions using Spring Data JPA.
-### Service Layer Pattern: Separates business logic from data access and HTTP request handling.
-### Builder Pattern: Can be applied when constructing complex entities in future enhancements.
+### Singleton Pattern: 
+
+For managing shared resources like database connections and cache.
+
+### Repository Pattern: 
+
+Abstracts database interactions using Spring Data JPA.
+
+### Service Layer Pattern: 
+
+Separates business logic from data access and HTTP request handling.
+
+### Builder Pattern: 
+
+Can be applied when constructing complex entities in future enhancements.
 
 ## SOLID Principles
 The application adheres to SOLID principles:
