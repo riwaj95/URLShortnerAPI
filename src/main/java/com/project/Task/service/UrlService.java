@@ -1,8 +1,10 @@
 package com.project.Task.service;
 
+import com.project.Task.exception.UrlNotFoundException;
 import com.project.Task.model.UrlEntity;
 import com.project.Task.repository.UrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,11 +33,12 @@ public class UrlService {
         return urlRepository.findAll();
     }
 
+    @Cacheable(value = "urls", key = "#shortId")
     public String getOriginalUrl(String shortId) {
         Optional<UrlEntity> optionalUrlEntity = urlRepository.findByShortId(shortId);
         return optionalUrlEntity
                 .map(UrlEntity::getOriginalUrl)
-                .orElseThrow(() -> new IllegalArgumentException("Short URL not found"));
+                .orElseThrow(() -> new UrlNotFoundException("Short URL not found"));
     }
 
     private String encodeBase62(Long id) {

@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.Collections;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,7 +39,7 @@ public class UrlIntegrationTest {
 
     @Test
     public void testShortenUrl() throws Exception {
-        String originalUrl = objectMapper.writeValueAsString("https://example.com");
+        String originalUrl = objectMapper.writeValueAsString(Collections.singletonMap("originalUrl", "https://example.com"));;
 
         // Perform POST request to shorten the URL
         mockMvc.perform(post("/api/url/shorten")

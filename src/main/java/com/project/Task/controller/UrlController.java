@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/url")
@@ -18,7 +19,11 @@ public class UrlController {
     private UrlService urlService;
 
     @PostMapping("/shorten")
-    public ResponseEntity<String> shortenUrl(@RequestBody String originalUrl) {
+    public ResponseEntity<String> shortenUrl(@RequestBody Map<String, String> request) {
+        String originalUrl = request.get("originalUrl");
+        if (originalUrl == null || originalUrl.isEmpty()) {
+            return ResponseEntity.badRequest().body("Invalid URL");
+        }
         String shortId = urlService.shortenUrl(originalUrl);
         String shortUrl = "http://short.url/" + shortId;
         return ResponseEntity.ok(shortUrl);
