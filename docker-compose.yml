@@ -1,0 +1,10 @@
+version: '3.8'  # Docker Compose version
+
+services:
+  urlshortener-api:
+    build: .  # Build the image using the Dockerfile in the current directory
+    ports:
+      - "8080:8080"  # Maps host port 8080 to container port 8080
+    environment:
+      SPRING_PROFILES_ACTIVE: dev  # Specify the Spring profile, change to 'dev' or 'staging' as needed
+    restart: always  # Automatically restart the container if it crashes
