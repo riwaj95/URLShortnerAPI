@@ -79,4 +79,4 @@ Access the Application: Once the container is running, the API will be available
 Environment-Specific Deployment
 You can configure environment variables such as SPRING_PROFILES_ACTIVE in docker-compose.yml to switch between environments (e.g., dev, staging, prod).
 
-### Thank you DKB factory for this exercise. There are still improvements to be made in the project. Since I am taking german classes from 10am-4pm Mon-Fri and going to job fairs, I could only do it in 2 days.Whenever I get free time, I will try to improve the code and add more features and push it in Github. Nevertheless I enjoyed the task and would like DKB for this oppurtunity.
+### Thank you DKB factory for this exercise. There are still improvements to be made in the project like caching, builder pattern, DTOs etc. Since I am taking german classes from 10am-4pm Mon-Fri and going to job fairs, I could only do it in 2 days.Whenever I get free time, I will try to improve the code and add more features and push it in Github. Nevertheless I enjoyed the task and would like DKB for this oppurtunity.
