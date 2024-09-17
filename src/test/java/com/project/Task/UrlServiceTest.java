@@ -1,5 +1,6 @@
 package com.project.Task;
 
+import com.project.Task.exception.UrlNotFoundException;
 import com.project.Task.model.UrlEntity;
 import com.project.Task.repository.UrlRepository;
 import com.project.Task.service.UrlService;
@@ -12,8 +13,7 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -60,6 +60,15 @@ public class UrlServiceTest {
 
 
         assertEquals("https://test.com", originalUrl);
+    }
+
+    @Test
+    public void testResolveShortUrlThrowsExceptionWhenNotFound() {
+        when(urlRepository.findByShortId("invalid")).thenReturn(Optional.empty());
+        Exception exception = assertThrows(UrlNotFoundException.class, () -> {
+            urlService.getOriginalUrl("invalid");
+        });
+        assertEquals("Short URL not found", exception.getMessage());
     }
 
 }
