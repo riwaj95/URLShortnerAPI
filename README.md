@@ -76,6 +76,10 @@ docker-compose up
 
 Access the Application: Once the container is running, the API will be available at http://localhost:8080.
 
+![postman](https://github.com/user-attachments/assets/c306bc72-bbd0-473a-a91b-15be3cd4f742)
+
+![post2](https://github.com/user-attachments/assets/7a061933-c556-444a-b53c-3fe5977e6591)
+
 Environment-Specific Deployment
 You can configure environment variables such as SPRING_PROFILES_ACTIVE in docker-compose.yml to switch between environments (e.g., dev, staging, prod).
 
