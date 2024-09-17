@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,18 +15,23 @@ public class UrlService {
     @Autowired
     private UrlRepository urlRepository;
 
-    public String shortenUrl(String originalUrl){
+    public String shortenUrl(String originalUrl) {
         UrlEntity urlEntity = new UrlEntity();
         urlEntity.setOriginalUrl(originalUrl);
         urlEntity.setCreatedAt(LocalDateTime.now());
-        UrlEntity savedUrl = urlRepository.save(urlEntity);
-        String shortId = encodeBase62(savedUrl.getId());
-        savedUrl.setShortId(shortId);
-        urlRepository.save(savedUrl);
+
+        String shortId = encodeBase62(System.currentTimeMillis());
+        urlEntity.setShortId(shortId);
+        // Save the UrlEntity with the shortId
+        urlRepository.save(urlEntity);
         return shortId;
     }
 
-    public String getOriginalUrl(String shortId){
+    public List<UrlEntity> getAllUrls() {
+        return urlRepository.findAll();
+    }
+
+    public String getOriginalUrl(String shortId) {
         Optional<UrlEntity> optionalUrlEntity = urlRepository.findByShortId(shortId);
         return optionalUrlEntity
                 .map(UrlEntity::getOriginalUrl)

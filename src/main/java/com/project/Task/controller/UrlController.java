@@ -1,5 +1,6 @@
 package com.project.Task.controller;
 
+import com.project.Task.model.UrlEntity;
 import com.project.Task.service.UrlService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/url")
@@ -24,10 +26,13 @@ public class UrlController {
 
     @GetMapping("/{shortId}")
     public void redirectUrl(@PathVariable String shortId, HttpServletResponse response) throws IOException {
-        // Resolve the original URL using the service
         String originalUrl = urlService.getOriginalUrl(shortId);
-
-        // Perform a redirect to the original URL
         response.sendRedirect(originalUrl);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<UrlEntity>> getAllUrls() {
+        List<UrlEntity> allUrls = urlService.getAllUrls();
+        return ResponseEntity.ok(allUrls);
     }
 }

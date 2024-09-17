@@ -27,7 +27,7 @@ public class UrlServiceTest {
 
     @BeforeEach
     public void setup() {
-        MockitoAnnotations.openMocks(this);  // Initialize mocks
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class UrlServiceTest {
         String shortId = urlService.shortenUrl("https://test.com");
 
         assertNotNull(shortId);
-        assertEquals(2, shortId.length());
+        assertEquals(7, shortId.length());
     }
 
     @Test
