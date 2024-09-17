@@ -42,11 +42,25 @@ Can be applied when constructing complex entities in future enhancements.
 ## SOLID Principles
 The application adheres to SOLID principles:
 
-SRP: Each class has a single responsibility, ensuring modularity.
-OCP: The system can be extended without modifying existing code.
-LSP: The repository interface allows substituting data storage mechanisms.
-ISP: The service only depends on the repository interface with no unnecessary methods.
-DIP: The service layer depends on abstractions (interfaces) rather than concrete implementations, ensuring flexibility.
+### SRP (Single Responsibility principle): 
+
+Each class has a single responsibility, ensuring modularity.
+
+### OCP (Open-closed principle): 
+
+The system can be extended without modifying existing code.
+
+### LSP (Liskov Substitution Principle): 
+
+The repository interface allows substituting data storage mechanism.
+
+### ISP (Interface Segregation Principle): 
+
+The service only depends on the repository interface with no unnecessary methods.
+
+### DIP (Dependency Inversion Principle): 
+
+The service layer depends on abstractions (interfaces) rather than concrete implementations, ensuring flexibility.
 
 ## Deployment
 
